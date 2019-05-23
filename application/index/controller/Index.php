@@ -40,7 +40,7 @@ class Index
     }
     public function test()
     {
-        // echo Config::get("app.default_return_type");
-        Send::push();
+        echo Config::get("app.aliliiin");
+        // Send::push();
     }
 }
