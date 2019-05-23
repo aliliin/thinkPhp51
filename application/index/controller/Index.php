@@ -29,6 +29,10 @@ class Index
         print_r($obj);
         echo "\n";
     }
+    public function yaconf()
+    {
+        var_dump(\Yaconf::get('aliliin.name'));
+    }
     public function hello($name = 'ThinkPHP5')
     {
         echo Config::get("app.default_return_type");
