@@ -43,4 +43,13 @@ class Index
         echo Config::get("app.aliliiin");
         // Send::push();
     }
+    // 使用单利
+    public function getSingle()
+    {
+        $single = \Single::getInstance()->getAbc();
+        \Single::getInstance()->getAbc();
+        \Single::getInstance()->getAbc();
+        \Single::getInstance()->getAbc();
+        var_dump($single);
+    }
 }
