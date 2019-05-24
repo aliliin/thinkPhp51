@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use Ali\Send;
+use TestReg;
 use think\facade\Config;
 
 class Index
@@ -51,5 +52,14 @@ class Index
         \Single::getInstance()->getAbc();
         \Single::getInstance()->getAbc();
         var_dump($single);
+    }
+    // 使用注册树模式
+    public function regTest()
+    {
+        $testReg = new \TestReg();
+        // \AliRegister::set('ali', $testReg);
+        // $a = \AliRegister::get('ali')->getreg();
+        $a = \AliRegister::get('TestReg')->getreg();
+        var_dump($a);
     }
 }
