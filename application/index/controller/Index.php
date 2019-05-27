@@ -70,4 +70,48 @@ class Index
         $bmw = new \di\Bwm();
         var_dump($ali->buy($bmw));
     }
+    // 反射的机制
+    public function rel()
+    {
+        $aliObj = new \Ali();
+        dump($aliObj);
+        $aliObj2 = new \ReflectionClass($aliObj);
+        dump($aliObj2);
+        $instance = $aliObj2->newInstance(); // 相当于实例化了这个类
+        dump($instance);
+        dump($aliObj2->getMethods()); // 相当于获取这个类中的所有参数
+        // 获取类中的方法的注视
+        foreach ($aliObj2->getMethods() as $method) {
+            dump($method->getDocComment());
+        }
+        // 拿到类中的所有熟悉，不管 是私有的还是公共的
+        dump($aliObj2->getProperties()); // 会返回一个数组，数组中的 name 就是属性的名字
+        // 调用类中的方法
+        // 方法一
+        echo $instance->getAli(1, 3);
+        echo '<br/>';
+        // 方法二
+        $method = $aliObj2->getMethod("getAli");
+        echo $method->invokeArgs($instance, ['mmm', '3343']);
+        echo '<br/>';
+        // 方法3
+        $method = $aliObj2->getMethod("test");
+        // 不传参数的调用方法 或者有默认值的方法
+        echo $method->invoke($instance);
+        echo '<br/>';
+        $method = $aliObj2->getMethod("tesst");
+        echo $method->invoke($instance);
+        echo '<br/>';
+        // 判断某个方法是不是公共的
+        $method = new \ReflectionMethod($aliObj, 'pub');
+        if ($method->isPUblic()) {
+            echo '是公共的';
+        } else {
+            echo '不是公共的';
+        }
+        echo '<br/>';
+        // 获取方法中的 参数
+        dump($method->getParameters());
+        die;
+    }
 }
