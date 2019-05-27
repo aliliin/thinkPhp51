@@ -62,4 +62,12 @@ class Index
         $a = \AliRegister::get('TestReg')->getreg();
         var_dump($a);
     }
+    // 依赖注入
+    public function di()
+    {
+        $ali = new \di\Person();
+        $Car = new \di\Car();
+        $bmw = new \di\Bwm();
+        var_dump($ali->buy($bmw));
+    }
 }
