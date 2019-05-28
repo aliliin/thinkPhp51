@@ -65,6 +65,22 @@ class Index
     // 依赖注入
     public function di()
     {
+        \di\Container::getInstance()->set("person", '\di\Person');
+        \di\Container::getInstance()->set("car", '\di\Car');
+        $obj = \di\Container::getInstance()->get("person", '3343');
+        dump($obj->buy());
+        die;
+
+        \di\Container::getInstance()->set("person", new \di\Person(new \di\Car()));
+        $obj = \di\Container::getInstance()->get("person");
+        dump($obj->buy());
+        die;
+        \di\Container::getInstance()->set("person", new \di\Person());
+        \di\Container::getInstance()->set("car", new \di\Car());
+        $obj = \di\Container::getInstance()->get("person");
+        dump($obj);
+        dump($obj->buy(\di\Container::getInstance()->get("car")));
+        die;
         $ali = new \di\Person();
         $Car = new \di\Car();
         $bmw = new \di\Bwm();
@@ -114,4 +130,5 @@ class Index
         dump($method->getParameters());
         die;
     }
+
 }

@@ -7,15 +7,21 @@ namespace di;
 //
 class Person
 {
+    // public $obj;
+    public function __construct(Car $obj, $arr = 'array')
+    {
+        $this->obj = $obj;
+        $this->a   = $arr;
+    }
     /**
      * 依赖：  person 类依赖于 Car
      * 注入：  car 类注入到 Person 类中
      * @Author   GaoYongLi
      * @DateTime 2019-05-27
      */
-    public function buy($obj)
+    public function buy()
     {
         // $car = new Car();
-        return $obj->pay();
+        return $this->obj->pay() . $this->a;
     }
 }
