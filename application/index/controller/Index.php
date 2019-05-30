@@ -1,4 +1,5 @@
 <?php
+
 namespace app\index\controller;
 
 use Ali\Send;
@@ -14,6 +15,7 @@ class Index
         die;
         return 'hello world';
     }
+
     // ArrayAccess 的使用
     public function obj()
     {
@@ -31,20 +33,24 @@ class Index
         print_r($obj);
         echo "\n";
     }
+
     public function yaconf()
     {
         var_dump(\Yaconf::get('aliliin.name'));
     }
+
     public function hello($name = 'ThinkPHP5')
     {
         echo Config::get("app.default_return_type");
         return 'hello,' . $name;
     }
+
     public function test()
     {
         echo Config::get("app.aliliiin");
         // Send::push();
     }
+
     // 使用单利
     public function getSingle()
     {
@@ -54,6 +60,7 @@ class Index
         \Single::getInstance()->getAbc();
         var_dump($single);
     }
+
     // 使用注册树模式
     public function regTest()
     {
@@ -63,6 +70,7 @@ class Index
         $a = \AliRegister::get('TestReg')->getreg();
         var_dump($a);
     }
+
     // 依赖注入
     public function di()
     {
@@ -87,6 +95,7 @@ class Index
         $bmw = new \di\Bwm();
         var_dump($ali->buy($bmw));
     }
+
     // 反射的机制
     public function rel()
     {
@@ -132,6 +141,9 @@ class Index
         die;
     }
 
+    /**
+     *  新增测试物流接口信息
+     */
     public function testlogistics()
     {
         $config = [
@@ -141,18 +153,18 @@ class Index
                 'customer' => '1270293',
             ],
         ];
-        $logistics  = new Logistics($config);
+        $logistics = new Logistics($config);
         $companies = $logistics->companies();
         $order = $logistics->order('805741929402797742', '圆通');
         echo $order['company'];
-        echo  $order->getCourierPhone();
-        echo  $order->getCode(); // 状态码
-        echo  $order->getMsg(); // 状态信息
-        echo  $order->getCompany(); // 物流公司简称
-        echo  $order->getNo(); // 物流单号
-        echo  $order->getStatus(); // 当前物流单详情
-        echo  $order->getCourier(); // 快递员姓名
-        echo  $order->getCourierPhone(); // 快递员手机号
+        echo $order->getCourierPhone();
+        echo $order->getCode(); // 状态码
+        echo $order->getMsg(); // 状态信息
+        echo $order->getCompany(); // 物流公司简称
+        echo $order->getNo(); // 物流单号
+        echo $order->getStatus(); // 当前物流单详情
+        echo $order->getCourier(); // 快递员姓名
+        echo $order->getCourierPhone(); // 快递员手机号
         print_r($order->getList()); // 物流单状态详情
         print_r($order->getOriginal()); // 获取接口原始返回信息
         echo '<br/>';
@@ -160,6 +172,12 @@ class Index
         echo '<br/>';
         echo json_encode($order);
 
+    }
 
+    public function acount()
+    {
+        $obj = new \AliCount();
+        echo $obj->count();
+        echo count($obj);
     }
 }
