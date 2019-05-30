@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use Ali\Send;
+use Finecho\Logistics\Logistics;
 use TestReg;
 use think\facade\Config;
 
@@ -131,4 +132,34 @@ class Index
         die;
     }
 
+    public function testlogistics()
+    {
+        $config = [
+            'provider' => 'kdniao', // aliyun/juhe/kuaidi100
+            'kdniao' => [
+                'app_code' => 'd7696d82-95d5-4922-ab95-4e0adee0fe8c',
+                'customer' => '1270293',
+            ],
+        ];
+        $logistics  = new Logistics($config);
+        $companies = $logistics->companies();
+        $order = $logistics->order('805741929402797742', '圆通');
+        echo $order['company'];
+        echo  $order->getCourierPhone();
+        echo  $order->getCode(); // 状态码
+        echo  $order->getMsg(); // 状态信息
+        echo  $order->getCompany(); // 物流公司简称
+        echo  $order->getNo(); // 物流单号
+        echo  $order->getStatus(); // 当前物流单详情
+        echo  $order->getCourier(); // 快递员姓名
+        echo  $order->getCourierPhone(); // 快递员手机号
+        print_r($order->getList()); // 物流单状态详情
+        print_r($order->getOriginal()); // 获取接口原始返回信息
+        echo '<br/>';
+        echo $order->getCode();
+        echo '<br/>';
+        echo json_encode($order);
+
+
+    }
 }
