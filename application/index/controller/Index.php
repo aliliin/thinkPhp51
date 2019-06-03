@@ -3,8 +3,11 @@
 namespace app\index\controller;
 
 use Ali\Send;
+use app\common\Ali;
+use app\common\Aliliin;
 use Finecho\Logistics\Logistics;
 use TestReg;
+use think\Container;
 use think\facade\Config;
 
 class Index
@@ -179,5 +182,30 @@ class Index
         $obj = new \AliCount();
         echo $obj->count();
         echo count($obj);
+    }
+
+    public function container()
+    {
+        dump(Container::get("config")->get('app.'));
+        $config  = new \Config();
+        dump($config::get("app."));
+        die;
+    }
+
+    public function facade()
+    {
+        $config  = new \Config(); // think\facade\config;
+//        dump($config::get("app."));
+        dump(Config::get("app."));
+    }
+
+    public function facadetest()
+    {
+        $obj = new Aliliin();
+        echo $obj->testAliliin();
+        // 需要把上面的类实现为 门面模式的方式调用
+        echo  \app\facade\Aliliin::testAliliin();
+        \think\Facade::bind('\app\facade\Ali','app\common\Ali');
+        dump( Ali::testAliliin());
     }
 }
