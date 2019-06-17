@@ -11,4 +11,6 @@
 
 // 应用容器绑定定义
 return [
+//    'sa' => "\app\common\Sa",
+    'sa' => \app\common\Sa::class,
 ];

@@ -208,4 +208,14 @@ class Index
         \think\Facade::bind('\app\facade\Ali','app\common\Ali');
         dump( Ali::testAliliin());
     }
+
+    // 加载  配置文件里面写的方法；（类似 common 中的 方法）
+    // 先加载 系统里面的 common 文件下的方法
+    public function test1()
+    {
+//        Container::get('sa')->abcd();die;
+        dump(\container()::get('sa')->abce());
+//        dump(abcd());
+//        dump(abcde());
+    }
 }
