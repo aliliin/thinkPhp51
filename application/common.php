@@ -12,5 +12,5 @@
 // 应用公共文件
 
 function abcd(){
-    return 'ABCD~';
+    return '测试  common.php 文件下的自定义的函数~';
 }

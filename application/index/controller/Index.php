@@ -14,8 +14,7 @@ class Index
 {
     public function index()
     {
-        echo Config::get("app.default_return_type");
-        die;
+//        echo Config::get("app.default_return_type");
         return 'hello world';
     }
 
@@ -213,9 +212,15 @@ class Index
     // 先加载 系统里面的 common 文件下的方法
     public function test1()
     {
+        dump(abcd());
 //        Container::get('sa')->abcd();die;
+        // 这种使用方法，需要在 provider 文件中 添加此类 应用容器绑定定义
         dump(\container()::get('sa')->abce());
-//        dump(abcd());
 //        dump(abcde());
+    }
+
+    // 加载  配置文件里面写的方法； common 中的 方法
+    public function abcd(){
+        dump(abcd());
     }
 }
