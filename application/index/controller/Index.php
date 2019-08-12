@@ -14,6 +14,7 @@ class Index
 {
     public function index()
     {
+        half(input());die;
 //        echo Config::get("app.default_return_type");
         return 'hello world';
     }
@@ -222,5 +223,6 @@ class Index
     // 加载  配置文件里面写的方法； common 中的 方法
     public function abcd(){
         dump(abcd());
+        dump(abcde());
     }
 }

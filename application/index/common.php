@@ -9,5 +9,5 @@ if(!function_exists('abcd')){
 }
 function abcde()
 {
-    return 'ABCDEF';
+    return '返回 控制器下(index)的common.php 文件下的方法';
 }
