@@ -37,6 +37,7 @@ return [
         'res' => 'index/res',
 //        'tst' => 'index/e'
     ],
+    'ams/:ma' => 'index/:ma',
     'hello/:name' => 'index/hello',
     // http://tp51.work/test/1122.html 访问的方式
     'test/:na'=>[
