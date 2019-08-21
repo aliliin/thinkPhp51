@@ -10,6 +10,8 @@
 // +----------------------------------------------------------------------
 
 // [ 应用入口文件 ]
+use think\Container;
+
 namespace think;
 
 // 加载基础文件
@@ -19,3 +21,4 @@ require __DIR__ . '/../thinkphp/base.php';
 
 // 执行应用并响应
 Container::get('app')->run()->send();
+// Container::get('app')->run() 是 response 类。 最终执行的是  response类中的  send 方法
