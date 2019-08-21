@@ -126,10 +126,10 @@ class Db
         // 解析配置参数
         $options = self::parseConfig($config ?: self::$config);
 
-        $query = $query ?: $options['query'];
+        $query = $query ?: $options['query']; // think\db\Query
 
         // 创建数据库连接对象实例
-        self::$connection = Connection::instance($options, $name);
+        self::$connection = Connection::instance($options, $name); // think\db\connector\Mysql
 
         return new $query(self::$connection);
     }

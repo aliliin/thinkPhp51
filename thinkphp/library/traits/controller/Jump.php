@@ -38,6 +38,7 @@ trait Jump
      */
     protected function success($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
     {
+
         if (is_null($url) && isset($_SERVER["HTTP_REFERER"])) {
             $url = $_SERVER["HTTP_REFERER"];
         } elseif ('' !== $url) {

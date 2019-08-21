@@ -43,6 +43,7 @@ class Mysql extends Connection
 
             return $query;
         });
+
     }
 
     /**

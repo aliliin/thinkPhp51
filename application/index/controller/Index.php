@@ -8,17 +8,25 @@ use app\common\Aliliin;
 use Finecho\Logistics\Logistics;
 use TestReg;
 use think\Container;
+use think\Controller;
+use think\Db;
 use think\facade\Config;
 
-class Index
+class Index extends Controller
 {
     public function index()
     {
+
         half(input());die;
 //        echo Config::get("app.default_return_type");
         return 'hello world';
     }
 
+    public function testSuccess()
+    {
+        return $this->success('继承了Controller 使用了 官方提供的 执行成功的方法','',
+            [1=>'继承了Controller 使用了 官方提供的 执行成功的方法']);
+    }
     // ArrayAccess 的使用
     public function obj()
     {
@@ -224,5 +232,16 @@ class Index
     public function abcd(){
         dump(abcd());
         dump(abcde());
+    }
+
+    /**
+     *  操作数据库 两个场景，一个 是 DB 一个是 Model
+     * Db: (Db => 用户操作数据库的入口 =》 用户接口； Connection 链接器 Builder => Sql语句生成器）
+     */
+    public function testDb()
+    {
+//        $res = Db::query("select * from student");
+        $res = Db::table("student")->where(['s_sex' => '男'])->All();
+        dump($res );
     }
 }

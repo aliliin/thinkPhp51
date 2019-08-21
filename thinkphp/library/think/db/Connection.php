@@ -194,7 +194,7 @@ abstract class Connection
             if (true === $name) {
                 $name = md5(serialize($config));
             }
-
+            // 工厂模式。
             self::$instance[$name] = Loader::factory($config['type'], '\\think\\db\\connector\\', $config);
         }
 
