@@ -7,6 +7,8 @@ use app\common\Ali;
 use app\common\Aliliin;
 use Finecho\Logistics\Logistics;
 use TestReg;
+use think\App;
+use think\Cache;
 use think\Container;
 use think\Controller;
 use think\Db;
@@ -243,5 +245,13 @@ class Index extends Controller
 //        $res = Db::query("select * from student");
         $res = Db::table("student")->where(['s_sex' => '男'])->All();
         dump($res );
+    }
+
+    // 设置缓存获取缓存
+    public function cache()
+    {
+
+        dump(\Cache::set('Aliliin','cache111'));
+        dump(\Cache::get('Aliliin'));
     }
 }
